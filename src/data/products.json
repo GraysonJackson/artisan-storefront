@@ -1,0 +1,51 @@
+[
+  {
+    "id": "prod_001",
+    "name": "Hand-Thrown Stoneware Mug",
+    "description": "A 12oz stoneware mug thrown on the wheel, finished with a matte black glaze. Each piece has slight variations in form that make it unique.",
+    "price": 38.00,
+    "category": "Ceramics",
+    "variants": [
+      { "id": "var_001_a", "name": "Matte Black", "colorHex": "#1a1a1a", "image": "/images/mug-black.jpg" },
+      { "id": "var_001_b", "name": "Cloud Grey", "colorHex": "#a0a0a0", "image": "/images/mug-grey.jpg" },
+      { "id": "var_001_c", "name": "Terracotta", "colorHex": "#c4622d", "image": "/images/mug-terracotta.jpg" }
+    ],
+    "defaultVariantId": "var_001_a"
+  },
+  {
+    "id": "prod_002",
+    "name": "Linen Weave Throw",
+    "description": "A lightweight linen throw, pre-washed for softness. Ideal for layering on a bed or draping over a sofa.",
+    "price": 125.00,
+    "category": "Textiles",
+    "variants": [
+      { "id": "var_002_a", "name": "Natural", "colorHex": "#f5f0e1", "image": "/images/throw-natural.jpg" },
+      { "id": "var_002_b", "name": "Slate Blue", "colorHex": "#5e7584", "image": "/images/throw-blue.jpg" }
+    ],
+    "defaultVariantId": "var_002_a"
+  },
+  {
+    "id": "prod_003",
+    "name": "Reclaimed Wood Serving Board",
+    "description": "Carved from reclaimed oak, finished with food-safe mineral oil. The grain pattern on each board is one-of-a-kind.",
+    "price": 65.00,
+    "category": "Home Goods",
+    "variants": [
+      { "id": "var_003_a", "name": "Light Oak", "colorHex": "#c3a776", "image": "/images/board-light.jpg" },
+      { "id": "var_003_b", "name": "Dark Walnut", "colorHex": "#4a3828", "image": "/images/board-dark.jpg" }
+    ],
+    "defaultVariantId": "var_003_a"
+  },
+  {
+    "id": "prod_004",
+    "name": "Ceramic Vase - Tall",
+    "description": "A tall, narrow-neck vase designed for single stems or dried grasses. Wheel-thrown and glazed by hand.",
+    "price": 52.00,
+    "category": "Ceramics",
+    "variants": [
+      { "id": "var_004_a", "name": "Sage", "colorHex": "#8a9a5b", "image": "/images/vase-sage.jpg" },
+      { "id": "var_004_b", "name": "Cream", "colorHex": "#fdfaf0", "image": "/images/vase-cream.jpg" }
+    ],
+    "defaultVariantId": "var_004_a"
+  }
+]
