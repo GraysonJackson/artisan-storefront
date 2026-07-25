@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useCartStore } from "@/lib/store";
+import Link from "next/link";
 
 export default function CheckoutPage() {
   const { items, totalPrice } = useCartStore();
@@ -22,9 +23,9 @@ export default function CheckoutPage() {
       <div className="max-w-md mx-auto px-6 py-24 text-center">
         <h1 className="font-serif text-3xl mb-4">Checkout</h1>
         <p className="text-stone-500 mb-6">Your cart is empty.</p>
-        <a href="/" className="text-sm uppercase tracking-widest underline">
+        <Link href="/" className="text-sm uppercase tracking-widest underline">
           Continue Shopping
-        </a>
+        </Link>
       </div>
     );
   }
@@ -36,9 +37,9 @@ export default function CheckoutPage() {
         <p className="text-stone-500 mb-6">
           Thank you for your purchase. You will receive a confirmation email shortly.
         </p>
-        <a href="/" className="text-sm uppercase tracking-widest underline">
+        <Link href="/" className="text-sm uppercase tracking-widest underline">
           Back to Shop
-        </a>
+        </Link>
       </div>
     );
   }

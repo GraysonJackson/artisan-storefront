@@ -19,13 +19,14 @@ export default function ProductPageClient({ productId }: { productId: string }) 
   const selectedVariant =
     product.variants.find((variant) => variant.id === selectedVariantId) ||
     product.variants[0];
+  const imageSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${selectedVariant.image}`;
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="bg-stone-100">
           <Image
-            src={selectedVariant.image}
+            src={imageSrc}
             alt={`${product.name} in ${selectedVariant.name}`}
             width={800}
             height={800}
