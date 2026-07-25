@@ -61,12 +61,15 @@ export default function ProductPage() {
             </div>
           </div>
 
-          <button
-            onClick={() => addItem(product, selectedVariantId)}
-            className="w-full bg-stone-900 text-white py-3 px-6 hover:bg-stone-800 transition-colors"
-          >
-            Add to Cart
-          </button>
+<button
+  onClick={() => {
+    if (!selectedVariantId) return;
+    addItem(product, selectedVariantId);
+  }}
+  className="w-full bg-stone-900 text-white py-3 px-6 hover:bg-stone-800 transition-colors"
+>
+  Add to Cart
+</button>
         </div>
       </div>
     </div>
