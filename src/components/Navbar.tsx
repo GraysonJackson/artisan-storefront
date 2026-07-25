@@ -1,6 +1,7 @@
 "use client";
 
 import { ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 interface NavbarProps {
   cartCount: number;
@@ -10,13 +11,13 @@ interface NavbarProps {
 export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
   return (
     <nav className="flex items-center justify-between px-6 py-4 border-b border-stone-200">
-      <a href="/" className="font-serif text-2xl tracking-tight">
+      <Link href="/" className="font-serif text-2xl tracking-tight">
         Atelier Handmade
-      </a>
+      </Link>
       <div className="flex items-center gap-8">
-        <a href="/products" className="text-sm uppercase tracking-widest text-stone-600 hover:text-stone-900">
+        <Link href="/" className="text-sm uppercase tracking-widest text-stone-600 hover:text-stone-900">
           Shop
-        </a>
+        </Link>
         <button onClick={onCartOpen} className="relative" aria-label="Open cart">
           <ShoppingCart size={20} strokeWidth={1.5} />
           {cartCount > 0 && (
