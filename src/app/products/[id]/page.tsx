@@ -3,8 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { getProductById } from "@/lib/products";
+import { getProductById, getProducts } from "@/lib/products";
 import { useCartStore } from "@/lib/store";
+
+export async function generateStaticParams() {
+  const products = getProducts();
+  return products.map((product) => ({
+    id: product.id,
+  }));
+}
 
 export default function ProductPage() {
   const params = useParams();
