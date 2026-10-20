@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-tavern: #181614;
+  --bg-panel: #221f1c;
+  --bg-card: #2a2622;
+  --bg-hover: #332f2a;
+  --border-wood: #3d3731;
+  --border-brass: #b48c48;
+  --brass-gold: #d4a359;
+  --brass-light: #f3d498;
+  --text-main: #f5f2eb;
+  --text-muted: #a8a096;
+  --text-faint: #756d64;
+  --accent-leather: #8b4513;
+  --accent-badge: #3b2a1a;
+}
+
+body {
+  background-color: #181614;
+  color: #f5f2eb;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  min-height: 100vh;
+}

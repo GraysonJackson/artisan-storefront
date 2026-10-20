@@ -1,0 +1,112 @@
+[
+  {
+    "id": "dice-vault",
+    "name": "Hardwood Dice Vault",
+    "description": "Precision-milled hardwood case with neodymium magnetic closure, dual felt-lined chambers, and capacity for 14 polyhedrals.",
+    "category": "storage",
+    "categoryLabel": "Dice Storage",
+    "variants": [
+      {
+        "id": "walnut",
+        "name": "Black Walnut",
+        "priceInCents": 6400,
+        "colorHex": "#5c381e",
+        "image": "/artisan-storefront/images/dice-vault-walnut.svg"
+      },
+      {
+        "id": "cherry",
+        "name": "Wild Cherry",
+        "priceInCents": 5800,
+        "colorHex": "#8c3523",
+        "image": "/artisan-storefront/images/dice-vault-cherry.svg"
+      },
+      {
+        "id": "ebony",
+        "name": "Aged Ebony",
+        "priceInCents": 7200,
+        "colorHex": "#262422",
+        "image": "/artisan-storefront/images/dice-vault-ebony.svg"
+      }
+    ],
+    "defaultVariantId": "walnut"
+  },
+  {
+    "id": "battle-mat",
+    "name": "Full-Grain Leather Mat",
+    "description": "Heirloom 24\"x36\" combat surface with embossed 1-inch tactical squares. Hydrophobic coating accepts wet-erase markers.",
+    "category": "mats",
+    "categoryLabel": "Table Mats",
+    "variants": [
+      {
+        "id": "cognac",
+        "name": "Cognac Tan",
+        "priceInCents": 8500,
+        "colorHex": "#6d4323",
+        "image": "/artisan-storefront/images/battle-mat-cognac.svg"
+      },
+      {
+        "id": "raven",
+        "name": "Raven Black",
+        "priceInCents": 8900,
+        "colorHex": "#1c1b1a",
+        "image": "/artisan-storefront/images/battle-mat-raven.svg"
+      }
+    ],
+    "defaultVariantId": "cognac"
+  },
+  {
+    "id": "gm-screen",
+    "name": "Solid Oak DM Screen",
+    "description": "Three-panel master screen with antiqued brass piano hinges, embedded neodymium sheet holders, and integrated initiative track.",
+    "category": "gm",
+    "categoryLabel": "GM Tools",
+    "variants": [
+      {
+        "id": "oak",
+        "name": "Rustic Oak",
+        "priceInCents": 12000,
+        "colorHex": "#543b27",
+        "image": "/artisan-storefront/images/gm-screen-oak.svg"
+      },
+      {
+        "id": "charcoal",
+        "name": "Charcoal Stained",
+        "priceInCents": 12800,
+        "colorHex": "#2b2927",
+        "image": "/artisan-storefront/images/gm-screen-charcoal.svg"
+      }
+    ],
+    "defaultVariantId": "oak"
+  },
+  {
+    "id": "metal-dice",
+    "name": "Precision Solid Metal 7-Set",
+    "description": "Balanced zinc-brass alloy dice set (160g total weight). Deeply engraved dragon font with hand-inked numerals.",
+    "category": "dice",
+    "categoryLabel": "Metal Dice",
+    "variants": [
+      {
+        "id": "bronze",
+        "name": "Weathered Bronze",
+        "priceInCents": 4800,
+        "colorHex": "#78593a",
+        "image": "/artisan-storefront/images/metal-dice-bronze.svg"
+      },
+      {
+        "id": "copper",
+        "name": "Ancient Copper",
+        "priceInCents": 4800,
+        "colorHex": "#9e5539",
+        "image": "/artisan-storefront/images/metal-dice-copper.svg"
+      },
+      {
+        "id": "obsidian",
+        "name": "Obsidian Silver",
+        "priceInCents": 5200,
+        "colorHex": "#363c45",
+        "image": "/artisan-storefront/images/metal-dice-obsidian.svg"
+      }
+    ],
+    "defaultVariantId": "bronze"
+  }
+]
