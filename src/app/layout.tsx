@@ -3,17 +3,15 @@ import { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Atelier Handmade — Artisan Goods",
-  description: "Handcrafted ceramics, textiles, home goods made by independent artisans.",
+  title: "Sidequest Supply — Tabletop Goods & Adventurer's Gear",
+  description: "Tabletop accessory shop demonstration with warm brutalist tavern aesthetic, integer-cents calculations, and persistent cart.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        <main className="min-h-screen">
-          {children}
-        </main>
+      <body className="bg-tavern text-parchment font-sans antialiased selection:bg-brass selection:text-tavern min-h-screen">
+        {children}
       </body>
     </html>
   );

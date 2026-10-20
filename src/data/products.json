@@ -1,51 +1,118 @@
 [
   {
-    "id": "prod_001",
-    "name": "Hand-Thrown Stoneware Mug",
-    "description": "A 12oz stoneware mug thrown on the wheel, finished with a matte black glaze. Each piece has slight variations in form that make it unique.",
-    "price": 38.00,
-    "category": "Ceramics",
+    "id": "dice-vault",
+    "name": "Bagged Polyhedral Dice",
+    "description": "A bag of blue polyhedral dice for the next session. This listing and its price are demonstration data.",
+    "category": "storage",
+    "categoryLabel": "Storage",
     "variants": [
-      { "id": "var_001_a", "name": "Matte Black", "colorHex": "#1a1a1a", "image": "/images/mug-black.jpg" },
-      { "id": "var_001_b", "name": "Cloud Grey", "colorHex": "#a0a0a0", "image": "/images/mug-grey.jpg" },
-      { "id": "var_001_c", "name": "Terracotta", "colorHex": "#c4622d", "image": "/images/mug-terracotta.jpg" }
+      {
+        "id": "pouch",
+        "name": "Blue dice",
+        "priceInCents": 1600,
+        "colorHex": "#234d3c",
+        "image": "/artisan-storefront/images/dice-bag.jpg",
+        "available": true
+      }
     ],
-    "defaultVariantId": "var_001_a"
+    "defaultVariantId": "pouch"
   },
   {
-    "id": "prod_002",
-    "name": "Linen Weave Throw",
-    "description": "A lightweight linen throw, pre-washed for softness. Ideal for layering on a bed or draping over a sofa.",
-    "price": 125.00,
-    "category": "Textiles",
+    "id": "battle-mat",
+    "name": "Session Notebook",
+    "description": "A notebook for clues, character notes, and the plans that survive the next session.",
+    "category": "paper",
+    "categoryLabel": "Session notes",
     "variants": [
-      { "id": "var_002_a", "name": "Natural", "colorHex": "#f5f0e1", "image": "/images/throw-natural.jpg" },
-      { "id": "var_002_b", "name": "Slate Blue", "colorHex": "#5e7584", "image": "/images/throw-blue.jpg" }
+      {
+        "id": "writing",
+        "name": "Writing notebook",
+        "priceInCents": 1200,
+        "colorHex": "#234d3c",
+        "image": "/artisan-storefront/images/notebook.jpg",
+        "available": true
+      }
     ],
-    "defaultVariantId": "var_002_a"
+    "defaultVariantId": "writing"
   },
   {
-    "id": "prod_003",
-    "name": "Reclaimed Wood Serving Board",
-    "description": "Carved from reclaimed oak, finished with food-safe mineral oil. The grain pattern on each board is one-of-a-kind.",
-    "price": 65.00,
-    "category": "Home Goods",
+    "id": "gm-screen",
+    "name": "Spiral Notebook",
+    "description": "A spiral-bound notebook for keeping reference notes close at hand.",
+    "category": "paper",
+    "categoryLabel": "Session notes",
     "variants": [
-      { "id": "var_003_a", "name": "Light Oak", "colorHex": "#c3a776", "image": "/images/board-light.jpg" },
-      { "id": "var_003_b", "name": "Dark Walnut", "colorHex": "#4a3828", "image": "/images/board-dark.jpg" }
+      {
+        "id": "spiral",
+        "name": "Spiral binding",
+        "priceInCents": 1400,
+        "colorHex": "#234d3c",
+        "image": "/artisan-storefront/images/training-notebook.jpg",
+        "available": true
+      }
     ],
-    "defaultVariantId": "var_003_a"
+    "defaultVariantId": "spiral"
   },
   {
-    "id": "prod_004",
-    "name": "Ceramic Vase - Tall",
-    "description": "A tall, narrow-neck vase designed for single stems or dried grasses. Wheel-thrown and glazed by hand.",
-    "price": 52.00,
-    "category": "Ceramics",
+    "id": "metal-dice",
+    "name": "Polyhedral Dice",
+    "description": "Choose a dark set or a colorful assortment for tabletop rolls. The selected photograph shows the chosen style.",
+    "category": "dice",
+    "categoryLabel": "Dice",
     "variants": [
-      { "id": "var_004_a", "name": "Sage", "colorHex": "#8a9a5b", "image": "/images/vase-sage.jpg" },
-      { "id": "var_004_b", "name": "Cream", "colorHex": "#fdfaf0", "image": "/images/vase-cream.jpg" }
+      {
+        "id": "black",
+        "name": "Black set",
+        "priceInCents": 2400,
+        "colorHex": "#222222",
+        "image": "/artisan-storefront/images/black-dice.jpg",
+        "available": true
+      },
+      {
+        "id": "mixed",
+        "name": "Mixed colors",
+        "priceInCents": 2200,
+        "colorHex": "#7078a2",
+        "image": "/artisan-storefront/images/mixed-dice.jpg",
+        "available": true
+      }
     ],
-    "defaultVariantId": "var_004_a"
+    "defaultVariantId": "black"
+  },
+  {
+    "id": "handmade-dice",
+    "name": "Handmade Dice",
+    "description": "An illustrated-by-photography example of individually made polyhedral dice. See the photo credits for the maker and original image.",
+    "category": "dice",
+    "categoryLabel": "Dice",
+    "variants": [
+      {
+        "id": "handmade",
+        "name": "Handmade set",
+        "priceInCents": 2800,
+        "colorHex": "#234d3c",
+        "image": "/artisan-storefront/images/handmade-dice.jpg",
+        "available": true
+      }
+    ],
+    "defaultVariantId": "handmade"
+  },
+  {
+    "id": "playing-cards",
+    "name": "Playing Card Deck",
+    "description": "A standard deck for a quick game between sessions. Cards and all other listings are part of this fictional catalog.",
+    "category": "table",
+    "categoryLabel": "Table tools",
+    "variants": [
+      {
+        "id": "deck",
+        "name": "Standard deck",
+        "priceInCents": 900,
+        "colorHex": "#234d3c",
+        "image": "/artisan-storefront/images/playing-cards.jpg",
+        "available": true
+      }
+    ],
+    "defaultVariantId": "deck"
   }
 ]

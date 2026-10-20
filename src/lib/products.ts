@@ -1,19 +1,31 @@
 import productsData from "@/data/products.json";
 import { Product } from "./types";
 
+export const BASE_PATH = "/artisan-storefront";
+
+export function withBasePath(path: string): string {
+  if (!path) return "";
+  if (path.startsWith(BASE_PATH)) return path;
+  return `${BASE_PATH}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function formatCents(cents: number): string {
+  return `$${(cents / 100).toFixed(2)}`;
+}
+
 export function getProducts(): Product[] {
   return productsData as Product[];
 }
 
 export function getProductById(id: string): Product | undefined {
-  return productsData.find((p) => p.id === id) as Product | undefined;
+  return (productsData as Product[]).find((p) => p.id === id);
 }
 
 export function getProductsByCategory(category: string): Product[] {
-  return productsData.filter((p) => p.category === category) as Product[];
+  if (category === "all") return productsData as Product[];
+  return (productsData as Product[]).filter((p) => p.category === category);
 }
 
-export function getCategories(): string[] {
-  const categories = new Set(productsData.map((p) => p.category));
-  return Array.from(categories);
+export function getCategories(): { id: string; label: string }[] {
+  return [{id:'all',label:'All accessories'}, ...Array.from(new Set(productsData.map(p=>p.category))).map(id=>({id,label:productsData.find(p=>p.category===id)?.categoryLabel||id}))];
 }

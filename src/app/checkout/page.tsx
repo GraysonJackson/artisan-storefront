@@ -1,129 +1,134 @@
 "use client";
 
 import { useState } from "react";
-import { useCartStore } from "@/lib/store";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import CartDrawer from "@/components/CartDrawer";
+import ReceiptModal from "@/components/ReceiptModal";
+import { formatCents } from "@/lib/products";
+import { useCartStore } from "@/lib/store";
+import { CartItem } from "@/lib/types";
 
 export default function CheckoutPage() {
-  const { items, totalPrice } = useCartStore();
+  const { items, subtotalInCents, clearCart, openCart } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [receiptOpen, setReceiptOpen] = useState(false);
+  const [receiptSnapshot, setReceiptSnapshot] = useState<{
+    items: CartItem[];
+    totalInCents: number;
+  }>({ items: [], totalInCents: 0 });
 
-  async function handleSubmit(e: React.FormEvent) {
+  const handleSimulatedCheckout = (e: React.FormEvent) => {
     e.preventDefault();
+    if (items.length === 0) return;
+
     setIsSubmitting(true);
-    // Simulate Stripe checkout
-    await new Promise((r) => setTimeout(r, 1500));
-    setSubmitted(true);
+    setReceiptSnapshot({
+      items: [...items],
+      totalInCents: subtotalInCents,
+    });
+    clearCart();
     setIsSubmitting(false);
-  }
-
-  if (items.length === 0 && !submitted) {
-    return (
-      <div className="max-w-md mx-auto px-6 py-24 text-center">
-        <h1 className="font-serif text-3xl mb-4">Checkout</h1>
-        <p className="text-stone-500 mb-6">Your cart is empty.</p>
-        <Link href="/" className="text-sm uppercase tracking-widest underline">
-          Continue Shopping
-        </Link>
-      </div>
-    );
-  }
-
-  if (submitted) {
-    return (
-      <div className="max-w-md mx-auto px-6 py-24 text-center">
-        <h1 className="font-serif text-3xl mb-4">Order Confirmed</h1>
-        <p className="text-stone-500 mb-6">
-          Thank you for your purchase. You will receive a confirmation email shortly.
-        </p>
-        <Link href="/" className="text-sm uppercase tracking-widest underline">
-          Back to Shop
-        </Link>
-      </div>
-    );
-  }
+    setReceiptOpen(true);
+  };
 
   return (
-    <div className="max-w-lg mx-auto px-6 py-12">
-      <h1 className="font-serif text-3xl mb-8">Checkout</h1>
+    <div className="min-h-screen flex flex-col bg-tavern text-parchment">
+      <Navbar onCartOpen={openCart} />
+      <CartDrawer />
 
-      <div className="mb-8 border border-stone-200 p-4">
-        <h2 className="text-sm uppercase tracking-widest mb-4">Order Summary</h2>
-        {items.map((item) => {
-          const variant = item.product.variants.find(
-            (v) => v.id === item.variantId
-          );
-          return (
-            <div key={item.variantId} className="flex justify-between py-2 border-b border-stone-100 last:border-0">
-              <span>
-                {item.product.name}
-                {variant && <span className="text-stone-400 ml-1">/ {variant.name}</span>}
-                <span className="text-stone-400 ml-1">× {item.quantity}</span>
-              </span>
-              <span>${(item.product.price * item.quantity).toFixed(2)}</span>
+      <main className="max-w-2xl w-full mx-auto my-8 sm:my-12 px-4 sm:px-6 flex-1">
+        <div className="mb-6 font-mono text-xs text-parchment-muted flex items-center gap-2">
+          <Link href="/" className="hover:text-brass-light underline">
+            &larr; Return to shop
+          </Link>
+          <span>/</span>
+          <span className="text-brass-light">Simulated Checkout</span>
+        </div>
+
+        <div className="bg-panel border border-wood rounded-[4px] p-6 sm:p-8 shadow-brutal">
+          <div className="border-b border-wood pb-4 mb-6">
+            <h1 className="font-display text-2xl font-bold text-brass-light">
+              Review your demo order
+            </h1>
+            <p className="text-xs font-mono text-parchment-muted mt-1">
+              No real payment details are collected.
+            </p>
+          </div>
+
+          {items.length === 0 && !receiptOpen ? (
+            <div className="text-center py-12">
+              <p className="text-parchment-faint font-mono text-sm mb-4">
+                Your cart is empty.
+              </p>
+              <Link
+                href="/"
+                className="font-mono text-xs text-brass-light hover:text-brass underline"
+              >
+                Browse accessories &rarr;
+              </Link>
             </div>
-          );
-        })}
-        <div className="flex justify-between pt-4 mt-2 border-t border-stone-200 font-medium">
-          <span>Total</span>
-          <span>${totalPrice().toFixed(2)}</span>
-        </div>
-      </div>
+          ) : (
+            <div>
+              {/* Order summary table */}
+              <div className="mb-6 bg-card border border-wood p-4 rounded-[3px]">
+                <h2 className="font-mono text-xs text-brass-light font-bold uppercase tracking-wider mb-3">
+                  Order summary ({items.length} items)
+                </h2>
+                <div className="space-y-2">
+                  {items.map((item) => (
+                    <div
+                      key={`${item.productId}-${item.variantId}`}
+                      className="flex justify-between items-center text-xs font-mono py-1 border-b border-wood/50 last:border-0"
+                    >
+                      <div className="text-parchment">
+                        {item.productTitle}{" "}
+                        <span className="text-parchment-faint">({item.variantTitle})</span>{" "}
+                        <span className="text-brass-light">&times; {item.quantity}</span>
+                      </div>
+                      <div className="font-bold text-brass-light">
+                        {formatCents(item.unitPriceInCents * item.quantity)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label className="block text-sm uppercase tracking-widest mb-2">Email</label>
-          <input
-            type="email"
-            required
-            className="w-full border border-stone-300 px-4 py-3 bg-white"
-            placeholder="you@example.com"
-          />
+                <div className="flex justify-between items-center pt-3 mt-3 border-t border-wood font-mono text-sm">
+                  <span className="text-parchment font-bold">Total:</span>
+                  <span className="text-base font-bold text-brass-light">
+                    {formatCents(subtotalInCents)}
+                  </span>
+                </div>
+                <div className="text-right text-[10px] font-mono text-parchment-faint mt-1">
+                  Demo total in cents: {subtotalInCents.toLocaleString()} cents
+                </div>
+              </div>
+
+              {/* Simulation Notice */}
+              <div className="bg-[#e7eee8] border border-brass-border p-3.5 rounded-[3px] mb-6 text-center font-mono text-xs text-brass-light">
+                Clicking confirm executes a simulated checkout: no real payment details are required or collected.
+              </div>
+
+              <form onSubmit={handleSimulatedCheckout} className="space-y-4"><label className="block">Name <input name="name" required defaultValue="Example Player" className="border border-wood p-2 w-full"/></label><label className="block">Demo email <input name="email" type="email" required defaultValue="player@example.com" className="border border-wood p-2 w-full"/></label><p>Free demo delivery. Nothing is shipped and no email is sent.</p>
+                <button
+                  type="submit"
+                  disabled={isSubmitting || items.length === 0}
+                  className="w-full bg-brass hover:bg-brass-light text-tavern font-mono text-sm font-bold py-3.5 px-6 rounded-[2px] border border-black shadow-[2px_2px_0px_#000] active:translate-x-px active:translate-y-px transition-all cursor-pointer disabled:opacity-50"
+                >
+                  {isSubmitting ? "Completing..." : `Complete demo order (${formatCents(subtotalInCents)})`}
+                </button>
+              </form>
+            </div>
+          )}
         </div>
-        <div>
-          <label className="block text-sm uppercase tracking-widest mb-2">Card Number</label>
-          <input
-            type="text"
-            required
-            maxLength={19}
-            className="w-full border border-stone-300 px-4 py-3 bg-white"
-            placeholder="4242 4242 4242 4242"
-          />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm uppercase tracking-widest mb-2">Expiry</label>
-            <input
-              type="text"
-              required
-              maxLength={5}
-              className="w-full border border-stone-300 px-4 py-3 bg-white"
-              placeholder="MM/YY"
-            />
-          </div>
-          <div>
-            <label className="block text-sm uppercase tracking-widest mb-2">CVC</label>
-            <input
-              type="text"
-              required
-              maxLength={4}
-              className="w-full border border-stone-300 px-4 py-3 bg-white"
-              placeholder="123"
-            />
-          </div>
-        </div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-stone-900 text-white py-3 px-6 hover:bg-stone-800 transition-colors disabled:opacity-50"
-        >
-          {isSubmitting ? "Processing..." : `Pay $${totalPrice().toFixed(2)}`}
-        </button>
-        <p className="text-xs text-stone-400 text-center">
-          Test mode — no real charges will be made.
-        </p>
-      </form>
+      </main>
+
+      <ReceiptModal
+        isOpen={receiptOpen}
+        onClose={() => setReceiptOpen(false)}
+        receiptItems={receiptSnapshot.items}
+        receiptTotalInCents={receiptSnapshot.totalInCents}
+      />
     </div>
   );
 }

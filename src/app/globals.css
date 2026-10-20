@@ -1,10 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+:root {
+  --bg-tavern: #181614;
+  --bg-panel: #221f1c;
+  --bg-card: #2a2622;
+  --bg-hover: #332f2a;
+  --border-wood: #3d3731;
+  --border-brass: #b48c48;
+  --brass-gold: #d4a359;
+  --brass-light: #f3d498;
+  --text-main: #f5f2eb;
+  --text-muted: #a8a096;
+  --text-faint: #756d64;
+  --accent-leather: #8b4513;
+  --accent-badge: #3b2a1a;
+}
 
 body {
-  background-color: #f8f5f0;
-  color: #1a1a1a;
+  background-color: #181614;
+  color: #f5f2eb;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  min-height: 100vh;
 }
+
+body{background:#f4f3eb;color:#19382b}dialog::backdrop{background:rgba(12,30,20,.5)}button,input,select{min-height:44px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #00719a;outline-offset:3px}input,select{max-width:100%}.category-stamp{color:#234d3c!important;background:#e7eee8!important}.product-card img{object-fit:cover}button:disabled{cursor:not-allowed;opacity:.55}

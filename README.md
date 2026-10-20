@@ -1,39 +1,18 @@
-# Atelier Handmade
+# Sidequest Supply
 
-A warm brutalist e-commerce storefront for handcrafted goods. Raw 1px borders paired with soft, rounded product cards -- the tension between hard structure and tactile warmth drives the whole design.
+A fictional tabletop accessory catalog with licensed real photographs, product variants, search/category/sort controls, a persistent cart, and a simulated checkout.
 
-[Live Demo](https://graysonjackson.github.io/artisan-storefront/)
+[Visit the shop](https://graysonjackson.github.io/artisan-storefront/)
 
-## What It Does
-
-Browse a catalog of handcrafted ceramics. Click into any product to see color variants; a live swatch picker swaps the product image in real time. Add items to a slide-in cart drawer animated with spring physics. Check out through a Stripe test-mode form.
-
-## Design Decisions
-
-The site is meant to feel like a physical shop. The clay accent color was pulled from product photography to keep the palette cohesive. Product cards use masonry-style variable heights based on image aspect ratio, which reads more organic than a uniform grid.
-
-The cart drawer slides in from the right using spring physics instead of a linear ease. This small detail makes the interaction feel physical rather than digital. The swatch picker on the product detail page swaps the displayed image without a page reload, keeping the browsing experience fluid.
-
-## Tech Stack
-
-- **Next.js 14** -- App Router, server and client components
-- **Tailwind CSS** -- Custom clay/sand palette, Playfair Display serif + Inter sans
-- **Zustand** -- Lightweight cart state management
-- **Framer Motion** -- Cart drawer spring animations and backdrop fade
-- **Lucide React** -- Minimal icon set
-- **Stripe** -- Test-mode checkout (simulated)
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
+```sh
+npm ci
+npm test
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Use Node 24. Next.js exports into `out/` under `/artisan-storefront/`, with directory-index product and checkout routes. Serve the export under that project path to test direct loads. GitHub Actions publishes `out/`; `next start` is not a static-export preview.
 
-## Build
+Cart persistence stores only product IDs, variant IDs, and bounded integer quantities. Prices come from the current catalog and calculations use cents. New carts start empty. Checkout collects sample details, snapshots the receipt, and clears the cart without contacting a payment or email service. Free delivery, prices, and availability are demonstration values.
 
-```bash
-npm run build
-npm start
+See [ASSET_CREDITS.md](ASSET_CREDITS.md) and the public photo-credit page for real image sources, creators, and licenses. No synthetic product artwork or generated photography is included.
